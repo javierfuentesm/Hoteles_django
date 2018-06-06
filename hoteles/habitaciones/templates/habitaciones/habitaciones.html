@@ -1,0 +1,13 @@
+{% extends "habitaciones/base.html"%}
+
+{% block content %}
+
+<form class="" action="." method="post">
+  {% csrf_token %}
+{{form}}
+<input type="submit" name="" value="Registrar">
+
+
+</form>
+
+{%endblock%}
