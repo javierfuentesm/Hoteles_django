@@ -1,19 +1,13 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-#from habitaciones.forms import RegisterFormModel
-from hoteles2.forms import RegisterForm
+from hoteles2.forms import RegisterFormModel
 from hoteles2.models import Hoteles
 # Create your views here.
 
 def register(request):
-    form = RegisterForm(request.POST or None)
+    form = RegisterFormModel(request.POST or None)
     if form.is_valid():
-        data = form.cleaned_data
-        hotel = Hoteles.objects.create(
-                nombre=data['nombre'],
-                calificacion=data['calificacion']
-
-                )
+        hotel = form.save()
 
         return JsonResponse({
                             'El id del hotel es ' :hotel.id,
